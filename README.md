@@ -12,6 +12,8 @@ cd lapinou
 python3 -m http.server 8765 --directory viewer
 ```
 
+Hosted on the homelab at http://lapinou.lab.lan (redeploy with `lab deploy . --name lapinou`; see `Dockerfile`).
+
 Open http://localhost:8765/ for the assembly or http://localhost:8765/#bed for the print layouts. Current individual STEP/STL parts and viewer assets are included. The large complete `output/assembly.step` download is generated locally with the commands below; it is not committed. `output/printed_assembly.step` contains the printed parts only.
 
 The minimal camera daemon and Frigate example are in `pi-camera/`. It serves a changing JPEG and archives a snapshot every six hours. See `pi-camera/README.md` for installation and service commands. No camera photographs, credentials, or printer upload scripts are included.
