@@ -1,0 +1,30 @@
+# Local environment, credentials, photos and execution logs
+.venv/
+__pycache__/
+*.pyc
+scratch/
+.env
+.env.*
+*.log
+/camera-*.jpg
+
+# Keep current printable exports and lightweight viewer assets.
+/output/*
+!/output/print/
+!/output/web/
+!/output/led-puck/
+!/output/assembly.png
+!/output/validation.json
+!/output/printed_assembly.step
+/output/print/plate_*.stl
+
+# Keep only references used by this design.
+/references/*
+!/references/SOURCES.md
+!/references/raspberry-pi-3b-plus/
+!/references/camera-module-3-step/
+!/references/camera-module-3-standard-mechanical-drawing.pdf
+!/references/raspberry-pi-3-b-plus-mechanical-drawing.pdf
+!/references/yaungel-led-puck/
+/references/camera-module-3-step/__MACOSX/
+/references/camera-module-3-step/Camera_module_3_wide_model_simple.stp

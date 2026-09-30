@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lapinou · Planter assembly</title>
+<link rel="icon" href="data:,">
+<style>
+:root{font-family:system-ui,sans-serif;color:#233a3d;background:#f4f3ed;color-scheme:light}*{box-sizing:border-box}body{margin:0}main{display:grid;grid-template-columns:300px 1fr;height:100dvh}aside{padding:30px 24px;background:#faf9f5;border-right:1px solid #dedfd6;overflow:auto}h1{font-size:28px;letter-spacing:-1px;margin:7px 0 8px;font-weight:650}.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#657571}p{font-size:13px;line-height:1.6;color:#61706b}h2{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin:27px 0 12px;color:#657571}.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:23px 0}.spec{border:1px solid #dce0d7;border-radius:9px;padding:12px}.spec strong{display:block;font-size:19px;font-weight:550}.spec span{font-size:11px;color:#687970}button,a.download{font:inherit;font-size:12px;border:1px solid #ccd5ca;background:#fffef9;border-radius:7px;color:#29484a;padding:9px 12px;cursor:pointer}button:hover,a.download:hover{background:#e8eee3}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #bd8138;outline-offset:3px}button.active{background:#345e61;color:#fff;border-color:#345e61}.views{display:flex;gap:7px}label.part{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:13px;cursor:pointer}input[type=checkbox]{accent-color:#386775;width:16px;height:16px;margin:0}.swatch{width:9px;height:9px;border-radius:50%}.part a{margin-left:auto;color:#61706b;font-size:10px;text-decoration:none}.part a:hover{text-decoration:underline}input[type=range]{width:100%;accent-color:#386775}.range-label{display:flex;justify-content:space-between;font-size:12px;margin:17px 0 8px}.download{display:block;text-align:center;text-decoration:none;margin-top:21px}.note{font-size:11px;color:#718078;margin-top:12px}.stage{position:relative;overflow:hidden;min-width:0}canvas{display:block;width:100%;height:100%;touch-action:none}.caption{position:absolute;top:25px;left:28px;right:28px;display:flex;justify-content:space-between;gap:15px;pointer-events:none;font-size:12px;color:#657571}.badge{background:#faf9f5da;border:1px solid #d9dfd3;padding:6px 10px;border-radius:30px;font-size:10px;letter-spacing:1px;text-transform:uppercase}.hint{position:absolute;bottom:23px;left:0;right:0;text-align:center;color:#6a7971;font-size:11px;pointer-events:none}#status{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#faf9f5ee;border:1px solid #d8dfd1;border-radius:10px;padding:18px 22px;max-width:80%;text-align:center;font-size:13px}#status:empty{display:none}@media(max-width:700px){main{display:flex;flex-direction:column-reverse;height:auto;min-height:100dvh}.stage{height:60dvh;min-height:360px}aside{border-right:0;border-top:1px solid #dedfd6;padding:22px}.specs{margin:15px 0}h2{margin-top:20px}.caption{left:15px;right:15px;top:15px}.hint{font-size:10px;bottom:15px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+<style>
+.modes{display:flex;gap:8px;margin:20px 0}.modes button{flex:1}.views{flex-wrap:wrap}select{font:inherit;padding:8px;border:1px solid #ccd5ca;border-radius:7px;width:100%;background:#fffef9}select:focus-visible{outline:3px solid #bd8138;outline-offset:3px}[hidden]{display:none!important}.bed-part{padding:10px 0;border-bottom:1px solid #dedfd6;font-size:12px;line-height:1.6}.bed-part a{float:right;color:#29484a}.bed-part small{display:block;color:#61706b}.bed-fit{font-size:12px;color:#38634d}.bed-fit.fail{color:#a04432}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<main>
+<aside>
+<div class="eyebrow">Plant growth study / 01</div><h1>Lapinou</h1>
+<p>A steady view of a growing plant.<br>Explore the planter, camera and Pi assembly.</p>
+<p><a href="./puck.html">LED puck reference · 59.3 mm diameter</a></p>
+<div class="specs"><div class="spec"><strong id="pot-size">2 × 3 in</strong><span>pot width × depth</span></div><div class="spec"><strong id="growth-size">5 in</strong><span>plant height</span></div></div>
+<div class="modes" aria-label="Display mode"><button data-mode="assembly" class="active">Assembly</button><button data-mode="bed">Bed</button></div>
+<h2>View</h2><div class="views"><button data-view="iso" class="active">Orbit</button><button data-view="side">Side</button><button data-view="top">Top</button><button id="reset" title="Restore view and all parts">Reset</button></div>
+<div id="bed-controls" hidden>
+<h2><label for="plate">MK3 print plate</label></h2><select id="plate"></select>
+<p class="note">250 × 210 mm bed · 210 mm height<br>Five production plates + one fit test.</p>
+<p id="bed-note"></p><p class="bed-fit" id="bed-fit"></p>
+<h2>On this plate</h2><div id="bed-parts"></div>
+<p class="note">Grid: 10 mm. Dashed boundary: 5 mm edge margin. Parts sit at Z = 0. Supports and brims are not shown; inspect them in the slicer. Print all objects by layer.</p>
+</div>
+<div id="assembly-controls">
+<h2><label for="distance">Camera distance</label></h2><select id="distance" style="font:inherit;padding:8px;border:1px solid #ccd5ca;border-radius:7px;width:100%;background:#fffef9"></select>
+<p class="note" id="framing"></p>
+<h2>Assembly</h2><div id="parts"></div>
+<label class="range-label" for="explode"><span>Separate parts</span><output id="explode-value">0%</output></label><input id="explode" type="range" min="0" max="100" value="0">
+<label class="part" style="margin-top:12px"><input type="checkbox" id="envelope" checked>Plant reference & camera axis</label>
+<a class="download" id="step-download" href="./assembly.step" download>Download complete STEP assembly ↓</a>
+<a class="download" href="./print/m3_pilot_coupon.stl" download>M3 pilot fit coupon · STL ↓</a>
+<p class="note">Pi 3B+ · Camera Module 3 standard (provisional). Puck diameter measured at 59.3 mm; cradle pocket 59.5 mm. Disc thickness remains provisional. Small STL links download individual parts in print orientation.</p>
+</div>
+</aside>
+<section class="stage" aria-label="Interactive 3D assembly">
+<div class="caption"><span id="baseline">Side-view timelapse rig</span><span class="badge">CAD assembly</span></div>
+<canvas aria-label="3D planter model. Drag to rotate, scroll to zoom, right-drag to pan. Use view buttons for fixed angles." tabindex="0"></canvas>
+<div id="status" role="status" aria-live="polite">Loading assembly…</div>
+<div class="hint">Drag to orbit · Scroll to zoom · Right-drag to pan · Pinch on touchscreens</div>
+</section>
+</main>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from './vendor/OrbitControls.js';
+import {STLLoader} from './vendor/STLLoader.js';
+const status=document.querySelector('#status');
+const names={camera_base:'Camera base',plant_base:'Plant base',catch_tray:'Drainage tray',pot:'Planter pot',camera_mast:'Camera plate',camera_shoe:'Camera mounting shoe',ruler_support:'Ruler support plate',ruler_shoe:'Ruler mounting shoe',growth_ruler:'Growth ruler',light_arm:'Light support arm',light_cradle:'LED puck cradle',led_puck_REFERENCE:'LED puck · provisional',camera_module_3_standard_REFERENCE:'Camera Module 3',pi_3b_plus_REFERENCE:'Raspberry Pi 3B+',m3_pilot_coupon:'M3 pilot fit coupon'};
+try{
+ const response=await fetch('./model.json');if(!response.ok)throw new Error('Model manifest is unavailable. Run the Python generator first.');
+ const model=await response.json(),d=model.dimensions,stage=document.querySelector('.stage');
+ const scene=new THREE.Scene();scene.background=new THREE.Color('#f4f3ed');
+ const assemblyGroup=new THREE.Group(),bedGroup=new THREE.Group();scene.add(assemblyGroup,bedGroup);bedGroup.visible=false;let mode='assembly';
+ const camera=new THREE.PerspectiveCamera(36,1,0.5,4000);camera.up.set(0,0,1);
+ const renderer=new THREE.WebGLRenderer({canvas:document.querySelector('canvas'),antialias:devicePixelRatio<=1});renderer.setPixelRatio(Math.min(devicePixelRatio,1.25));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;
+ const controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.minDistance=60;controls.maxDistance=1600;
+ const ambient=new THREE.HemisphereLight(0xffffff,0x8a9385,1.5);ambient.position.set(0,0,400);scene.add(ambient);
+ for(const [position,intensity] of [[[100,-200,450],1.8],[[350,300,200],.8]]){const light=new THREE.DirectionalLight(0xffffff,intensity);light.position.set(...position);scene.add(light)}
+ const grid=new THREE.GridHelper(800,40,0xc4cdc0,0xe0e4d9);grid.rotation.x=Math.PI/2;grid.position.set(120,0,-0.8);scene.add(grid);
+ const target=new THREE.Vector3(d.lens_to_stem_mm/2,25,105);let activeView='iso';
+ let pendingFrame=0;
+ function render(){if(!pendingFrame)pendingFrame=requestAnimationFrame(()=>{pendingFrame=0;renderer.render(scene,camera)})}
+ function setView(view){activeView=view;camera.up.set(0,0,1);const s=Math.max(1,(mode==='bed'?500:750)/stage.clientWidth);const offsets=mode==='bed'?{iso:[250*s,-350*s,390*s],side:[0,-600*s,0],top:[0,0,520*s]}:{iso:[380*s,-520*s,320*s],side:[0,-650*s,0],top:[0,0,720*s]};const focus=mode==='bed'?new THREE.Vector3(125,105,view==='top'?0:35):target;if(view==='top')camera.up.set(0,1,0);camera.position.copy(focus).add(new THREE.Vector3(...offsets[view]));controls.target.copy(focus);controls.update();document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));render()}
+ const resize=new ResizeObserver(()=>{renderer.setSize(stage.clientWidth,stage.clientHeight,false);camera.aspect=stage.clientWidth/stage.clientHeight;camera.updateProjectionMatrix();render()});resize.observe(stage);controls.addEventListener('change',render);
+ const meshes=new Map(),loader=new STLLoader();let loaded=0;
+ await Promise.all(model.parts.map(async part=>{
+  const geometry=await loader.loadAsync(part.file);geometry.computeBoundingBox();
+  const raisedRuler=part.name==='growth_ruler'&&d.ruler_relief_mm>0;
+  if(raisedRuler){const positions=geometry.getAttribute('position'),colors=new Float32Array(positions.count*3);const body=new THREE.Color('#f5f1de'),ink=new THREE.Color('#243b3e');for(let i=0;i<positions.count;i+=3){const x=(positions.getX(i)+positions.getX(i+1)+positions.getX(i+2))/3;const color=x<d.lens_to_stem_mm-.001?ink:body;for(let j=0;j<3;j++)color.toArray(colors,(i+j)*3)}geometry.setAttribute('color',new THREE.BufferAttribute(colors,3))}
+  const mesh=new THREE.Mesh(geometry,new THREE.MeshLambertMaterial({color:raisedRuler?'#ffffff':part.color,vertexColors:raisedRuler,side:THREE.DoubleSide}));mesh.name=part.name;assemblyGroup.add(mesh);meshes.set(part.name,mesh);status.textContent=`Loading assembly… ${++loaded} / ${model.parts.length}`;
+ }));
+ for(const part of model.parts){const row=document.createElement('label');row.className='part';const input=document.createElement('input');input.type='checkbox';input.checked=true;input.dataset.part=part.name;input.addEventListener('change',()=>{meshes.get(part.name).visible=input.checked;render()});const swatch=document.createElement('span');swatch.className='swatch';swatch.style.background=part.color;row.append(input,swatch,document.createTextNode(names[part.name]||part.name));if(part.printable){const link=document.createElement('a');link.href=`./print/${part.name}.stl`;link.download='';link.textContent='STL';link.title=`Download ${names[part.name]}`;link.addEventListener('click',e=>e.stopPropagation());row.append(link)}document.querySelector('#parts').append(row)}
+ const guides=new THREE.Group(),x=d.lens_to_stem_mm,z=d.soil_z_mm,h=d.plant_height_mm,w=d.plant_width_mm/2;
+ function line(points,color,dashed=false){const geometry=new THREE.BufferGeometry().setFromPoints(points.map(p=>new THREE.Vector3(...p)));const material=dashed?new THREE.LineDashedMaterial({color,dashSize:5,gapSize:3}):new THREE.LineBasicMaterial({color});const obj=new THREE.Line(geometry,material);obj.computeLineDistances();guides.add(obj);return obj}
+ const plantGuide=line([[x,-w,z],[x,w,z],[x,w,z+h],[x,-w,z+h],[x,-w,z]],0x65855a,true),axisGuide=line([[0,0,d.lens_z_mm],[x,0,d.lens_z_mm]],0xb87c3f,true);assemblyGroup.add(guides);
+ const distanceSelect=document.querySelector('#distance');
+ for(const distance of d.distance_positions_mm){const option=document.createElement('option');option.value=distance;option.textContent=`${distance} mm${distance===x?' · default':''}`;distanceSelect.append(option)}distanceSelect.value=x;
+ document.querySelector('#step-download').textContent=`Complete STEP · ${x} mm position ↓`;
+ document.querySelector('#growth-size').textContent=`${(h/25.4).toFixed(1).replace('.0','')} in`;
+ document.querySelector('#pot-size').textContent=`${(d.pot_inside_diameter_mm/25.4).toFixed(1).replace('.0','')} × ${(d.pot_usable_depth_mm/25.4).toFixed(1).replace('.0','')} in`;
+ const explosion={camera_base:[-25,0,0],plant_base:[25,0,0],catch_tray:[35,0,35],pot:[35,0,110],camera_mast:[-40,0,70],camera_shoe:[-40,0,25],ruler_support:[40,35,35],ruler_shoe:[40,35,15],growth_ruler:[40,35,95],camera_module_3_standard_REFERENCE:[0,-35,90],pi_3b_plus_REFERENCE:[-25,45,60],light_arm:[45,40,70],light_cradle:[45,-10,140],led_puck_REFERENCE:[45,-10,165]};
+ function explode(){const amount=Number(document.querySelector('#explode').value)/100,distance=Number(distanceSelect.value),shift=distance-x;for(const [name,mesh] of meshes){mesh.position.set(...explosion[name]).multiplyScalar(amount);if(d.moving_parts.includes(name))mesh.position.x+=shift}plantGuide.position.x=shift;axisGuide.scale.x=distance/x;document.querySelector('#baseline').textContent=`${distance} mm camera distance · dimensions in millimetres`;document.querySelector('#framing').textContent=2*(distance-w)*Math.tan(20.5*Math.PI/180)<h+10?'Close setting: may crop the mature plant. Check live framing.':'Four M3 screws lock the selected position. Pot and ruler move together.';document.querySelector('#explode-value').textContent=`${Math.round(amount*100)}%`;guides.visible=document.querySelector('#envelope').checked&&amount===0;render()}
+ // Reuse display geometry and the generator's print rotations; downloads retain full detail.
+ const plates=[
+  {label:'1 · Camera base',items:[['camera_base']],note:'Base down, Pi posts up. Start with 4–5 walls around the M3 pilot holes.'},
+  {label:'2 · Plant base',items:[['plant_base']],note:'Top face down so the adjustment tongue rests on the bed. The engraved distance labels face the bed.'},
+  {label:'3 · Pot, tray & flat mounts',items:[['pot',15,15],['catch_tray',85,15],['camera_shoe',185,15],['ruler_shoe',190,125],['camera_mast',15,130],['ruler_support',15,180]],note:'Camera and ruler support plates lie flat. Camera bosses face up; the two low shoes print base down. Pot ears sit flat on the bed; the tray wraps around them. Use four M3 × 10 screws for pot/tray fixings. Assemble each plate into its shoe with two M3 × 12 screws.'},
+  {label:'4 · Two-colour ruler',items:[['growth_ruler']],note:'Flat, markings up. Change colour after the 3.0 mm body: before layer 16 at Z = 3.20 mm with 0.20 mm layers and first layer.'},
+  {label:'5 · Bolt-on light mount',items:[['light_arm',15,15],['light_cradle',15,98]],note:'Only these two parts are new. Arm lies flat; cradle prints shelf down. Reuse the ruler holes with two M3 × 20 screws and the existing nuts. Fit the cradle with two M3 × 10 screws; retain the 59.3 mm puck with three M3 × 6 screws and 9 mm OD washers. No existing parts need reprinting.'},
+  {label:'Test · M3 pilot coupon',items:[['m3_pilot_coupon']],note:'Print this first in the same PLA and settings as the base. Compare the 2.5, 2.6 and 2.7 mm pilots with your actual screws.'}
+ ];
+ const printMeshes=new Map();
+ for(const part of model.parts.filter(p=>p.printable)){
+  const source=meshes.get(part.name),mesh=new THREE.Mesh(source.geometry,source.material);
+  mesh.rotation.set(...part.print_rotation_deg.map(v=>THREE.MathUtils.degToRad(v)));mesh.updateMatrixWorld(true);
+  mesh.userData.printBounds=new THREE.Box3(new THREE.Vector3(...part.print_bounds_mm[0]),new THREE.Vector3(...part.print_bounds_mm[1]));
+  mesh.name=part.name;mesh.visible=false;bedGroup.add(mesh);printMeshes.set(part.name,mesh);
+ }
+ const couponGeometry=await loader.loadAsync('./assets/m3_pilot_coupon.stl');couponGeometry.computeBoundingBox();
+ const couponMesh=new THREE.Mesh(couponGeometry,new THREE.MeshLambertMaterial({color:'#386775'}));couponMesh.name='m3_pilot_coupon';couponMesh.visible=false;couponMesh.userData.printBounds=couponGeometry.boundingBox;bedGroup.add(couponMesh);printMeshes.set(couponMesh.name,couponMesh);
+ const bed=new THREE.Mesh(new THREE.BoxGeometry(250,210,3),new THREE.MeshLambertMaterial({color:'#d4ddd0'}));bed.position.set(125,105,-1.75);bedGroup.add(bed);
+ const gridPoints=[];for(let x=0;x<=250;x+=10)gridPoints.push(new THREE.Vector3(x,0,-.12),new THREE.Vector3(x,210,-.12));for(let y=0;y<=210;y+=10)gridPoints.push(new THREE.Vector3(0,y,-.12),new THREE.Vector3(250,y,-.12));bedGroup.add(new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(gridPoints),new THREE.LineBasicMaterial({color:'#aab8a7'})));
+ const marginLine=new THREE.Line(new THREE.BufferGeometry().setFromPoints([[5,5],[245,5],[245,205],[5,205],[5,5]].map(([x,y])=>new THREE.Vector3(x,y,-.08))),new THREE.LineDashedMaterial({color:'#667e61',dashSize:3,gapSize:2}));marginLine.computeLineDistances();bedGroup.add(marginLine);
+ const plateSelect=document.querySelector('#plate');let bedBounds=[],bedFits=true;
+ plates.forEach((plate,i)=>{const option=document.createElement('option');option.value=i;option.textContent=plate.label;plateSelect.append(option)});
+ function selectPlate(){
+  const plate=plates[Number(plateSelect.value)];for(const mesh of printMeshes.values())mesh.visible=false;
+  const list=document.querySelector('#bed-parts');list.replaceChildren();bedBounds=[];
+  for(const [name,x,y] of plate.items){
+   const mesh=printMeshes.get(name),bounds=mesh.userData.printBounds,size=bounds.getSize(new THREE.Vector3());
+   mesh.position.set((x??(250-size.x)/2)-bounds.min.x,(y??(210-size.y)/2)-bounds.min.y,-bounds.min.z);mesh.visible=true;
+   const placed=bounds.clone().translate(mesh.position);bedBounds.push({name,min:placed.min.toArray(),max:placed.max.toArray()});
+   const row=document.createElement('div');row.className='bed-part';const link=document.createElement('a');link.href=`./print/${name}.stl`;link.download='';link.textContent='STL';row.append(link,document.createTextNode(names[name]));const detail=document.createElement('small');detail.textContent=`${size.toArray().map(n=>n.toFixed(1)).join(' × ')} mm · XYZ\nX ${placed.min.x.toFixed(1)} · Y ${placed.min.y.toFixed(1)} mm`;detail.style.whiteSpace='pre-line';row.append(detail);list.append(row);
+  }
+  bedFits=bedBounds.every(b=>b.min[0]>=5-.001&&b.min[1]>=5-.001&&Math.abs(b.min[2])<.001&&b.max[0]<=245.001&&b.max[1]<=205.001&&b.max[2]<=210.001);
+  for(let i=0;i<bedBounds.length;i++)for(let j=i+1;j<bedBounds.length;j++){const a=bedBounds[i],b=bedBounds[j];if(![0,1].some(axis=>a.max[axis]+10<=b.min[axis]+.001||b.max[axis]+10<=a.min[axis]+.001))bedFits=false}
+  document.querySelector('#bed-note').textContent=plate.note;const fit=document.querySelector('#bed-fit');fit.textContent=bedFits?`Fits MK3 · ≥5 mm edge margin${bedBounds.length>1?' · ≥10 mm part spacing':''}`:'Layout needs adjustment: check part sizes and spacing.';fit.classList.toggle('fail',!bedFits);
+  if(mode==='bed')document.querySelector('#baseline').textContent=`${plate.label} · 250 × 210 mm bed`;
+  render();
+ }
+ function setMode(next){mode=next;const printing=mode==='bed';assemblyGroup.visible=!printing;bedGroup.visible=printing;grid.visible=!printing;document.querySelector('#assembly-controls').hidden=printing;document.querySelector('#bed-controls').hidden=!printing;document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));document.querySelector('.badge').textContent=printing?'Print layout':'CAD assembly';if(printing)selectPlate();else explode();history.replaceState(null,'',printing?'#bed':location.pathname+location.search);setView('iso')}
+ plateSelect.addEventListener('change',selectPlate);
+ document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+ window.addEventListener('hashchange',()=>setMode(location.hash==='#bed'?'bed':'assembly'));
+ distanceSelect.addEventListener('change',explode);
+ document.querySelector('#explode').addEventListener('input',explode);document.querySelector('#envelope').addEventListener('change',explode);
+ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+ document.querySelector('#reset').addEventListener('click',()=>{if(mode==='bed'){plateSelect.value=0;selectPlate();setView('iso');return}document.querySelectorAll('[data-part]').forEach(i=>{i.checked=true;meshes.get(i.dataset.part).visible=true});document.querySelector('#explode').value=0;distanceSelect.value=x;document.querySelector('#envelope').checked=true;explode();setView('iso')});
+ renderer.domElement.addEventListener('keydown',e=>{if(e.key==='Home'){e.preventDefault();setView('iso')}});
+ selectPlate();setMode(location.hash==='#bed'?'bed':'assembly');await new Promise(requestAnimationFrame);status.textContent='';document.body.dataset.ready='true';
+ // Small read-only hook used by the browser smoke check.
+ window.viewerState=()=>({parts:meshes.size,visible:[...meshes.values()].filter(m=>m.visible).length,view:activeView,explode:Number(document.querySelector('#explode').value),guides:guides.visible,distance:Number(distanceSelect.value),potShift:meshes.get('pot').position.x,cameraShift:meshes.get('camera_mast').position.x||0,guideShift:plantGuide.position.x,lightShift:meshes.get('light_arm').position.x,puckShift:meshes.get('led_puck_REFERENCE').position.x});
+ window.viewerPerf=()=>({frames:renderer.info.render.frame,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,pixelRatio:renderer.getPixelRatio(),sharedPrintGeometry:model.parts.filter(p=>p.printable).every(p=>printMeshes.get(p.name).geometry===meshes.get(p.name).geometry)});
+ window.bedState=()=>({mode,plate:Number(plateSelect.value),fits:bedFits,parts:bedBounds,assemblyVisible:assemblyGroup.visible,bedVisible:bedGroup.visible});
+}catch(error){console.error(error);status.textContent=`Unable to load the viewer: ${error.message}`;document.body.dataset.ready='error'}
+</script>
+</body>
+</html>

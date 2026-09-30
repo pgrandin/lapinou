@@ -1,0 +1,15 @@
+{
+  "diameter_mm": 59.3,
+  "body_thickness_mm": 2.5,
+  "vent_diameter_mm": 9.0,
+  "vent_pitch_diameter_mm": 31.0,
+  "rib_span_mm": 28.0,
+  "rib_thickness_mm": 1.4,
+  "rib_height_mm": 4.5,
+  "usb_width_mm": 9.0,
+  "usb_depth_mm": 3.5,
+  "usb_height_above_body_mm": 7.0,
+  "retaining_peg_diameter_mm": 4.5,
+  "retaining_peg_length_mm": 2.0,
+  "led_group_radius_mm": 16.5
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=Lapinou camera JPEG feed and six-hour snapshots
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/lapinou
+RuntimeDirectory=lapinou-camera
+Environment=SNAPSHOT_DIR=/home/pi/lapinou/snapshots
+Environment=SNAPSHOT_SECONDS=21600
+Environment=WIDTH=1640
+Environment=HEIGHT=1232
+Environment=PORT=8080
+ExecStart=/usr/bin/python3 -u /home/pi/lapinou/camera.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

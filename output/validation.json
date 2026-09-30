@@ -1,0 +1,274 @@
+{
+  "parts": {
+    "camera_base": {
+      "volume_mm3": 139863.6,
+      "print_size_mm": [
+        215.0,
+        150.0,
+        20.0
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "plant_base": {
+      "volume_mm3": 112712.67,
+      "print_size_mm": [
+        220.0,
+        158.0,
+        8.0
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "catch_tray": {
+      "volume_mm3": 23076.29,
+      "print_size_mm": [
+        80.0,
+        104.0,
+        14.0
+      ],
+      "blind_pilot_depth_mm": 4.2,
+      "closed_pilot_end_mm": 2.2,
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "pot": {
+      "volume_mm3": 41592.59,
+      "print_size_mm": [
+        55.6,
+        98.0,
+        79.4
+      ],
+      "ears_flush_with_bottom": true,
+      "ear_bed_contact_area_mm2": 525.03,
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "camera_shoe": {
+      "volume_mm3": 37461.0,
+      "print_size_mm": [
+        45.0,
+        72.0,
+        30.0
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "camera_mast": {
+      "volume_mm3": 40517.01,
+      "print_size_mm": [
+        158.3,
+        38.0,
+        11.38
+      ],
+      "camera_mount_pilot_mm": 1.7,
+      "flat_contact_area_mm2": 5448.93,
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "ruler_shoe": {
+      "volume_mm3": 9205.56,
+      "print_size_mm": [
+        34.0,
+        26.0,
+        30.0
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "ruler_support": {
+      "volume_mm3": 11384.59,
+      "print_size_mm": [
+        96.8,
+        24.0,
+        5.0
+      ],
+      "flat_contact_area_mm2": 2177.3,
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "growth_ruler": {
+      "volume_mm3": 9703.01,
+      "print_size_mm": [
+        134.0,
+        24.0,
+        3.8
+      ],
+      "color_change_after_z_mm": 3.0,
+      "raised_marking_area_mm2": 179.29,
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "light_arm": {
+      "volume_mm3": 32272.56,
+      "print_size_mm": [
+        153.7,
+        72.0,
+        8.0
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    },
+    "light_cradle": {
+      "volume_mm3": 12995.19,
+      "print_size_mm": [
+        73.3,
+        106.65,
+        6.5
+      ],
+      "stl_boundary_or_nonmanifold_edges": 0
+    }
+  },
+  "intersections_mm3": {
+    "camera_base / plant_base": 0.0,
+    "camera_base / camera_shoe": 0.0,
+    "camera_base / camera_mast": 0.0,
+    "camera_base / pi_3b_plus_REFERENCE": 0.0,
+    "catch_tray / pot": 0.0,
+    "pot / light_arm": 0.0,
+    "camera_shoe / camera_mast": 0.0,
+    "camera_mast / camera_module_3_standard_REFERENCE": 0.0,
+    "ruler_shoe / ruler_support": 0.0,
+    "light_cradle / led_puck_REFERENCE": 0.0
+  },
+  "status": "CAD checks only; physical fit untested",
+  "light_mount": {
+    "new_printed_parts": 2,
+    "existing_parts_to_reprint": 0,
+    "arm_flat_contact_area_mm2": 3917.62,
+    "existing_ruler_holes_aligned": true,
+    "puck_edge_retention_checked": true,
+    "mature_canopy_clearance_mm": 30,
+    "provisional_puck": true
+  },
+  "flat_mounts": {
+    "socket_depth_mm": 24,
+    "clamp_screws": "4 x M3 x 12 mm into PLA",
+    "pilot_mm": 2.6,
+    "thread_engagement_mm": 4,
+    "aligned_pilots": true,
+    "foot_nut_access": true
+  },
+  "distance_settings": [
+    {
+      "distance_mm": 230,
+      "overlap_mm": 120,
+      "four_pilots_and_clearances_aligned": true,
+      "bearing_rings_supported": true,
+      "near_edge_vertical_frame_mm": 124.5,
+      "full_growth_fits_with_margin": false
+    },
+    {
+      "distance_mm": 250,
+      "overlap_mm": 100,
+      "four_pilots_and_clearances_aligned": true,
+      "bearing_rings_supported": true,
+      "near_edge_vertical_frame_mm": 139.46,
+      "full_growth_fits_with_margin": true
+    },
+    {
+      "distance_mm": 270,
+      "overlap_mm": 80,
+      "four_pilots_and_clearances_aligned": true,
+      "bearing_rings_supported": true,
+      "near_edge_vertical_frame_mm": 154.41,
+      "full_growth_fits_with_margin": true
+    },
+    {
+      "distance_mm": 290,
+      "overlap_mm": 60,
+      "four_pilots_and_clearances_aligned": true,
+      "bearing_rings_supported": true,
+      "near_edge_vertical_frame_mm": 169.37,
+      "full_growth_fits_with_margin": true
+    },
+    {
+      "distance_mm": 310,
+      "overlap_mm": 40,
+      "four_pilots_and_clearances_aligned": true,
+      "bearing_rings_supported": true,
+      "near_edge_vertical_frame_mm": 184.33,
+      "full_growth_fits_with_margin": true
+    }
+  ],
+  "dimensions": {
+    "pot_inside_diameter_mm": 50.8,
+    "pot_usable_depth_mm": 76.2,
+    "pot_wall_mm": 2.4,
+    "rim_z_mm": 93.80000000000001,
+    "soil_z_mm": 90.80000000000001,
+    "plant_height_mm": 127,
+    "plant_width_mm": 127,
+    "lens_to_stem_mm": 250,
+    "lens_z_mm": 154.3,
+    "nominal_vertical_frame_mm": 186.94233974240234,
+    "near_edge_vertical_frame_mm": 139.45898544783216,
+    "pi_mount_pitch_mm": [
+      58,
+      49
+    ],
+    "camera_mount_pitch_mm": [
+      21,
+      12.5
+    ],
+    "camera_mount_pilot_mm": 1.7,
+    "ruler_body_mm": 3.0,
+    "ruler_relief_mm": 0.8,
+    "ruler_color_change_after_z_mm": 3.0,
+    "distance_positions_mm": [
+      230,
+      250,
+      270,
+      290,
+      310
+    ],
+    "moving_parts": [
+      "plant_base",
+      "catch_tray",
+      "pot",
+      "ruler_support",
+      "ruler_shoe",
+      "growth_ruler",
+      "light_arm",
+      "light_cradle",
+      "led_puck_REFERENCE"
+    ],
+    "joint_overlap_mm": 100,
+    "joint_pilot_mm": 2.6,
+    "joint_clearance_mm": 3.3,
+    "mount_socket_depth_mm": 24,
+    "mount_front_clearance_mm": 0.4,
+    "pot_ear_bottom_mm": 14.4,
+    "pot_retaining_screw_length_mm": 10,
+    "tray_ear_clearance_mm": 0.6,
+    "tray_mount_pilot_depth_mm": 4.2,
+    "full_growth_fits_with_margin": true,
+    "light_puck_diameter_mm": 59.3,
+    "light_puck_bottom_z_mm": 248.5,
+    "light_led_above_soil_mm": 157,
+    "light_mature_canopy_clearance_mm": 30,
+    "light_cradle_bottom_z_mm": 244.5,
+    "light_pocket_diametral_clearance_mm": 0.2,
+    "light_retaining_holes_mm": [
+      [
+        283.15,
+        0.0
+      ],
+      [
+        233.425,
+        28.70874213545414
+      ],
+      [
+        233.42499999999998,
+        -28.70874213545413
+      ]
+    ],
+    "light_cradle_holes_mm": [
+      [
+        262,
+        44
+      ],
+      [
+        262,
+        62
+      ]
+    ],
+    "light_mount_screws": "2 x M3 x 20 at ruler; 2 x M3 x 10 cradle; 3 x M3 x 6 with 9 mm OD washers",
+    "light_reference_status": "Measured 59.3 mm disc diameter; other puck dimensions provisional"
+  },
+  "reference_sha256": {
+    "references/raspberry-pi-3b-plus/raspberry-pi-3b-plus.step": "9589fb42a7ac5b04aec5f4ab8f80d398e4ae8b260561d385852a99d0a9e170f2",
+    "references/camera-module-3-step/Camera_module_3_std_model_simple.stp": "ecbc4b091e51f31c6186b81ad68d4205b8dceec0d90c116cd7fd699e1f1c5702",
+    "output/led-puck/yaungel_puck_reference.step": "4a0e685f5f9e306f987440c1d8b4f12e3f60bd679bbbd879cb056bf400f1ae99"
+  }
+}

@@ -1,0 +1,375 @@
+{
+  "parts": [
+    {
+      "name": "camera_base",
+      "file": "assets/camera_base.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          -45.0,
+          -40.0,
+          -2.0539125955565396e-15
+        ],
+        [
+          170.0,
+          110.0,
+          20.0
+        ]
+      ]
+    },
+    {
+      "name": "plant_base",
+      "file": "assets/plant_base.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        180,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          70.0,
+          -106.0,
+          -8.000000100000006
+        ],
+        [
+          290.0,
+          52.0,
+          1.4960255256823984e-14
+        ]
+      ]
+    },
+    {
+      "name": "catch_tray",
+      "file": "assets/catch_tray.stl",
+      "color": "#a96543",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          209.9999999,
+          -52.0,
+          7.999999999999998
+        ],
+        [
+          290.0000001,
+          52.0,
+          22.000000100000136
+        ]
+      ]
+    },
+    {
+      "name": "pot",
+      "file": "assets/pot.stl",
+      "color": "#c47c54",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          222.1999999,
+          -49.0,
+          14.399999999999999
+        ],
+        [
+          277.80000010000003,
+          49.0,
+          93.80000000000001
+        ]
+      ]
+    },
+    {
+      "name": "camera_shoe",
+      "file": "assets/camera_shoe.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          -41.0,
+          -36.0,
+          7.999999999999998
+        ],
+        [
+          4.0,
+          36.0,
+          38.0
+        ]
+      ]
+    },
+    {
+      "name": "camera_mast",
+      "file": "assets/camera_mast.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          -172.3,
+          -19.0,
+          -19.0000001
+        ],
+        [
+          -13.999999900000002,
+          19.0,
+          -7.619999999999982
+        ]
+      ]
+    },
+    {
+      "name": "ruler_shoe",
+      "file": "assets/ruler_shoe.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          233.0,
+          79.0,
+          7.999999999999971
+        ],
+        [
+          267.0,
+          105.0,
+          38.00000000000001
+        ]
+      ]
+    },
+    {
+      "name": "ruler_support",
+      "file": "assets/ruler_support.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          14.000000000000028,
+          80.0,
+          -258.0
+        ],
+        [
+          110.80000000000005,
+          104.0,
+          -253.0
+        ]
+      ]
+    },
+    {
+      "name": "growth_ruler",
+      "file": "assets/growth_ruler.stl",
+      "color": "#d5b65d",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          88.80000000000003,
+          79.99999999999999,
+          -253.0
+        ],
+        [
+          222.8000000000001,
+          104.0,
+          -249.19999989999994
+        ]
+      ]
+    },
+    {
+      "name": "light_arm",
+      "file": "assets/light_arm.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        90,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          90.80000000000004,
+          32.0,
+          -266.0
+        ],
+        [
+          244.50000000000006,
+          104.0,
+          -258.0
+        ]
+      ]
+    },
+    {
+      "name": "light_cradle",
+      "file": "assets/light_cradle.stl",
+      "color": "#386775",
+      "printable": true,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ],
+      "print_bounds_mm": [
+        [
+          213.35,
+          -36.65,
+          244.4999999999941
+        ],
+        [
+          286.65,
+          70.00000000000001,
+          251.0
+        ]
+      ]
+    },
+    {
+      "name": "camera_module_3_standard_REFERENCE",
+      "file": "assets/camera_module_3_standard_REFERENCE.stl",
+      "color": "#428658",
+      "printable": false,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "pi_3b_plus_REFERENCE",
+      "file": "assets/pi_3b_plus_REFERENCE.stl",
+      "color": "#428658",
+      "printable": false,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "led_puck_REFERENCE",
+      "file": "assets/led_puck_REFERENCE.stl",
+      "color": "#428658",
+      "printable": false,
+      "print_rotation_deg": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "dimensions": {
+    "pot_inside_diameter_mm": 50.8,
+    "pot_usable_depth_mm": 76.2,
+    "pot_wall_mm": 2.4,
+    "rim_z_mm": 93.80000000000001,
+    "soil_z_mm": 90.80000000000001,
+    "plant_height_mm": 127,
+    "plant_width_mm": 127,
+    "lens_to_stem_mm": 250,
+    "lens_z_mm": 154.3,
+    "nominal_vertical_frame_mm": 186.94233974240234,
+    "near_edge_vertical_frame_mm": 139.45898544783216,
+    "pi_mount_pitch_mm": [
+      58,
+      49
+    ],
+    "camera_mount_pitch_mm": [
+      21,
+      12.5
+    ],
+    "camera_mount_pilot_mm": 1.7,
+    "ruler_body_mm": 3.0,
+    "ruler_relief_mm": 0.8,
+    "ruler_color_change_after_z_mm": 3.0,
+    "distance_positions_mm": [
+      230,
+      250,
+      270,
+      290,
+      310
+    ],
+    "moving_parts": [
+      "plant_base",
+      "catch_tray",
+      "pot",
+      "ruler_support",
+      "ruler_shoe",
+      "growth_ruler",
+      "light_arm",
+      "light_cradle",
+      "led_puck_REFERENCE"
+    ],
+    "joint_overlap_mm": 100,
+    "joint_pilot_mm": 2.6,
+    "joint_clearance_mm": 3.3,
+    "mount_socket_depth_mm": 24,
+    "mount_front_clearance_mm": 0.4,
+    "pot_ear_bottom_mm": 14.4,
+    "pot_retaining_screw_length_mm": 10,
+    "tray_ear_clearance_mm": 0.6,
+    "tray_mount_pilot_depth_mm": 4.2,
+    "full_growth_fits_with_margin": true,
+    "light_puck_diameter_mm": 59.3,
+    "light_puck_bottom_z_mm": 248.5,
+    "light_led_above_soil_mm": 157,
+    "light_mature_canopy_clearance_mm": 30,
+    "light_cradle_bottom_z_mm": 244.5,
+    "light_pocket_diametral_clearance_mm": 0.2,
+    "light_retaining_holes_mm": [
+      [
+        283.15,
+        0.0
+      ],
+      [
+        233.425,
+        28.70874213545414
+      ],
+      [
+        233.42499999999998,
+        -28.70874213545413
+      ]
+    ],
+    "light_cradle_holes_mm": [
+      [
+        262,
+        44
+      ],
+      [
+        262,
+        62
+      ]
+    ],
+    "light_mount_screws": "2 x M3 x 20 at ruler; 2 x M3 x 10 cradle; 3 x M3 x 6 with 9 mm OD washers",
+    "light_reference_status": "Measured 59.3 mm disc diameter; other puck dimensions provisional"
+  }
+}
